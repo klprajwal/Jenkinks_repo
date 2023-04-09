@@ -5,7 +5,7 @@ pipeline {
 	    stage('Install dependencies') {
 		    steps {
 			  sh 'echo "stage1"'
-			  sh 'pwd'  
+			  pwd  
 			}
 		}
 		stage('Checking and fixing') {   
