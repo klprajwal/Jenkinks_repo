@@ -4,22 +4,22 @@ pipeline {
 	stages {
 	    stage('Install dependencies') {
 		    steps {
-			    echo 'stage1'
+			  sh 'echo "stage1"'
 			}
 		}
 		stage('Checking and fixing') {   
 		     steps {
-			    echo 'stage2'
+			  sh 'echo "stage2"'
              }				
         }
 		stage('Running application') {
 		    steps {
-			    echo 'stage1'
+			  sh 'echo "stage3"'
 			}
 		}
 		stage('Unit test') {   
 		     steps {
-			    echo 'stage2'
+			  sh 'echo "stage4"'
              }				
         }
 	}
