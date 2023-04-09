@@ -1,19 +1,26 @@
 pipeline {
     agent any
-    stages {
-        stage('Install Python Dependencies') {
-            steps {
-                script {
-                    // Define the list of Python packages to install
-                    def pythonPackages = ['nccclient', 'pandas', 'ipaddress', 'netaddr', 'prettytable']
-                    
-                    // Loop through the packages and install them using pip
-                    for (def package : pythonPackages) {
-                        sh "pip install ${package}"
-                    }
-                }
-            }
+	
+	stages {
+	    stage('Install dependencies') {
+		    steps {
+			    echo 'stage1'
+			}
+		}
+		stage('Checking and fixing') {   
+		     steps {
+			    echo 'stage2'
+             }				
         }
-        // Add more stages as p 
-    }
+		stage('Running application') {
+		    steps {
+			    echo 'stage1'
+			}
+		}
+		stage('Unit test') {   
+		     steps {
+			    echo 'stage2'
+             }				
+        }
+	}
 }
