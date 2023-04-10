@@ -39,6 +39,7 @@ pipeline {
 		stage('Unit test') {   
 		     steps {
 			  sh 'python3 -m unittest -v unit_test.py'
+			  sh 'echo "done"'
 			 
              }				
         }
