@@ -7,6 +7,7 @@ pipeline {
 			  sh 'echo "stage1"'
 			  sh '''
 			      python3 -m pip install --upgrade pip
+			      python3 -m pip install netmiko==3.0.0
 			      python3 -m pip install pylint
                               python3 -m  pip install ncclient
                               python3 -m  pip install pandas
