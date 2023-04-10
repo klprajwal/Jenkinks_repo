@@ -46,7 +46,7 @@ pipeline {
 	}
 	post{
 		always{
-			emailext attachLog:true, body:'Build result',subject:'Mail from Jenkins',to:'klprajwal979@gmail.com'
+			emailext attachLog:true, body:'$PROJECT_NAME $BUILD_STATUS',subject:'your project status is $BUILD_STATUS',to:'klprajwal979@gmail.com'
 		}
 	}
 }
