@@ -18,7 +18,32 @@ pipeline {
 		}
 		stage('Checking and fixing') {   
 		    steps {
-			sh 'python3 -m pylint netman_netconf_obj2.py'
+			sh '''
+			#!/bin/bash
+                        # Run pylint and store the output in a variable
+                        pylint_report=$(pylint netman_netconf_obj2.py)
+                        echo "$pylint_report"
+
+                        # Extract the number of violations from the pylint report
+                        num_violations=$(echo "$pylint_report" | grep 'Your code has been rated at' | awk '{print $7}' | awk -F "/" '{print $1}')
+
+                        #echo "$num_violations : test "
+
+                        # Convert the number of violations to an integer
+                        conv_int=$(printf "%.0f" "$num_violations")
+                        #echo "$conv_int : the integer"
+
+                        # Checking if the number of violations exceeds the quality gate
+                       if [ "$conv_int" -gt 5 ]; then
+                       echo "pylint score: $num_violations/10"
+                       echo "pipeline can proceed"
+                       exit 0
+                       else
+                       echo "Pylint violation occurred: $num_violations/10"
+                       echo "Fix the violation before proceeding further"
+                       exit 1
+                       fi
+			'''
                     }				
                 }
 		stage('Running application') {
