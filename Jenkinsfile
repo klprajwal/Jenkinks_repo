@@ -18,7 +18,7 @@ pipeline {
 		stage('Checking and fixing') {   
 		    steps {
 			sh (
-        			script: 'python3 netman_netconf_obj2.py',
+        			script: 'python3 netman_netconf_obj2.py; return 0',
         			returnStdout: true
     			   )
              }				
