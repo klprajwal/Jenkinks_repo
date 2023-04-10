@@ -22,10 +22,10 @@ pipeline {
 			#!/bin/bash
                         # Run pylint and store the output in a variable
                         pylint_report=$(pylint netman_netconf_obj2.py)
-                        echo "$pylint_report"
+                        echo "${pylint_report}"
 
                         # Extract the number of violations from the pylint report
-                        num_violations=$(echo "$pylint_report" | grep 'Your code has been rated at' | awk '{print $7}' | awk -F "/" '{print $1}')
+                        num_violations=$(echo "${pylint_report}" | grep 'Your code has been rated at' | awk '{print $7}' | awk -F "/" '{print $1}')
 
                         #echo "$num_violations : test "
 
