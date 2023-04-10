@@ -32,12 +32,12 @@ pipeline {
                 }
 		stage('Running application') {
 		    steps {
-			  sh 'echo "stage3"'
+			  sh 'python3 netman_netconf_obj2.py'
 			}
 		}
 		stage('Unit test') {   
 		     steps {
-			  sh 'echo "stage4"'
+			  sh 'python3 -m unittest -v unit_test.py'
              }				
         }
 	}
