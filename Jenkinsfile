@@ -19,6 +19,7 @@ pipeline {
 		    steps {
 			sh '''
 			pylint netman_netconf_obj2.py
+			echo $?
 			'''
              }				
         }
