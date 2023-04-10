@@ -17,9 +17,9 @@ pipeline {
 		}
 		stage('Checking and fixing') {   
 		    steps {
-			sh "pylint netman_netconf_obj2.py; return 0"
-             }				
-        }
+			sh 'pylint netman_netconf_obj2.py'
+                    }				
+                }
 		stage('Running application') {
 		    steps {
 			  sh 'echo "stage3"'
