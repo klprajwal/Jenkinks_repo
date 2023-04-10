@@ -21,7 +21,7 @@ pipeline {
 			sh '''
 			#!/bin/bash
                         # Run pylint and store the output in a variable
-                        pylint_report=$(python3 -m pylint netman_netconf_obj2.py)
+                        pylint_report=$(python3 -m pylint netman_netconf_obj2.py | grep "Your code has been .*")
                         echo "${pylint_report}"
 
                         # Extract the number of violations from the pylint report
