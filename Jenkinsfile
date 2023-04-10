@@ -18,11 +18,7 @@ pipeline {
 		stage('Checking and fixing') {   
 		    steps {
 			sh '''
-			#!/bin/bash
-
-			pylint netman_netconf_obj2.py > pylint_report.txt
-
-
+			pylint netman_netconf_obj2.py
 			'''
              }				
         }
