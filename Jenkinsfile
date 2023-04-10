@@ -17,9 +17,10 @@ pipeline {
 		}
 		stage('Checking and fixing') {   
 		    steps {
-			sh '''
-			echo "HEllo"
-			'''
+			sh (
+        			script: 'pylint netman_netconf_obj2.py',
+        			returnStdout: true
+    			   )
              }				
         }
 		stage('Running application') {
