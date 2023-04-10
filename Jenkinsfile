@@ -20,24 +20,11 @@ pipeline {
 		    steps {
 			sh '''
 			#!/bin/bash
-                        # Run pylint and store the output in a variable
-                        pylint_report=$(python3 -m pylint netman_netconf_obj2.py | grep "Your code has been .*")
-                        echo "${pylint_report}"
-
-                        # Extract the number of violations from the pylint report
-                        num_violations=$(echo "${pylint_report}" | grep 'Your code has been rated at' | awk '{print $7}' | awk -F "/" '{print $1}')
-
-                        #echo "$num_violations : test "
-
-                        # Convert the number of violations to an integer
-                        #conv_int=$(printf "%.0f" "$num_violations")
-                        #echo "$conv_int : the integer"
-
-                       pylint_score=$(python3 -m pylint netman_netconf_obj2.py | grep -o 'at.*10 ' | grep -o  \\"[0-9]*\\.\\" | grep -o \\"[0-9]*\\")
+                       pylint_score=$(python3 -m pylint netman_netconf_obj2.py | grep -o 'at .*10 ' | awk -F. '{print $1}' | grep -o '[0-9]*')
                        if [ "$pylint_score" -lt 5 ]; then
-                       echo "Pylint violation occurred: $pylint_score/10"
-                       echo "Fix the violation before proceeding further"
-                       exit 1
+                            echo "Pylint violation occurred: $pylint_score/10"
+                            echo "Fix the violation before proceeding further"
+                            exit 1
                        fi
 			'''
                     }				
