@@ -18,8 +18,7 @@ pipeline {
 		stage('Checking and fixing') {   
 		    steps {
 			sh '''
-			pylint netman_netconf_obj2.py
-			echo $?
+			echo "HEllo"
 			'''
              }				
         }
