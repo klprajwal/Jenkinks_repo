@@ -21,6 +21,7 @@ pipeline {
 			sh '''
 			#!/bin/bash
                        pylint_score=$(python3 -m pylint netman_netconf_obj2.py | grep -o 'at .*10 ' | awk -F. '{print $1}' | grep -o '[0-9]*')
+		       echo "$pylint_score"
                        if [ "$pylint_score" -lt 5 ]; then
                             echo "Pylint violation occurred: $pylint_score/10"
                             echo "Fix the violation before proceeding further"
