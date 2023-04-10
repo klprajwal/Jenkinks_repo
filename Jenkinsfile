@@ -42,5 +42,11 @@ pipeline {
 			 
              }				
         }
+		
+	}
+	post{
+		always{
+			emailext attachLog:true, body:'Build result',subject:'Mail from Jenkins',to:'klprajwal979@gmail.com'
+		}
 	}
 }
